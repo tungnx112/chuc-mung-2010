@@ -20,6 +20,7 @@ html{color-scheme:light}body{margin:0}
   --sky1:#4b2a47; --sky2:#5c3548; --sky3:#6b4a49; color-scheme:dark}}
 :root[data-theme="dark"]{--sky1:#4b2a47; --sky2:#5c3548; --sky3:#6b4a49; color-scheme:dark}
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 html,body{min-height:100%; overflow-x:hidden}
 body{
   background:linear-gradient(180deg,var(--sky1) 0%,var(--sky2) 55%,var(--sky3) 100%) fixed var(--sky2);
@@ -45,6 +46,7 @@ body{
 .corner.tr{top:8px; right:8px; transform:scaleX(-1)}
 .corner.bl{bottom:8px; left:8px; transform:scaleY(-1)}
 .corner.br{bottom:8px; right:8px; transform:scale(-1,-1)}
+.corner.bl,.corner.br{width:62px; height:62px}
 
 .stage{display:grid}
 .page{
