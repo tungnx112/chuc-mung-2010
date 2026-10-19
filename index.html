@@ -5,92 +5,205 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Chúc chị Mai Hoa 20/10</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&family=Pacifico&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,500;1,400;1,500;1,600&display=swap">
 <style>
 html{color-scheme:light}body{margin:0}
-/* Layout: một tấm thiệp đứng giữa nền hoa rơi; số 20.10 lớn là điểm nhấn duy nhất */
+/* Layout: thiệp giấy kem có khung đôi và hoa hồng ở bốn góc, đặt trên nền hoàng hôn hồng đào; mỗi lời chúc là một trang */
 :root{
-  --bg:#fbeff1; --bg2:#f3e3f0; --card:#fffafb; --fg:#4a2f3d; --muted:#8a6b7b;
-  --rose:#d9718f; --rose-soft:#f6c9d6; --lilac:#b79ad6; --line:#efd3dc;
-  --display:"Pacifico","Comic Sans MS",cursive;
-  --body:"Quicksand",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --sky1:#f3b3c5; --sky2:#f8cdc2; --sky3:#f5dcb4;
+  --paper:#fdf8f1; --ink:#43303a; --muted:#8b6d7a;
+  --rose:#b83a62; --rose-lt:#f2b7c8; --rose-soft:#e4a4b8; --leaf:#7fa17b; --lilac:#b79ad6;
+  --display:"Playfair Display",Georgia,"Times New Roman",serif;
+  --body:"Lora",Georgia,"Times New Roman",serif;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#2a1a28; --bg2:#38243a; --card:#3a2639; --fg:#f6e3ea; --muted:#c7a6b7;
-  --rose:#f08aa8; --rose-soft:#6b3a52; --lilac:#c4a8e6; --line:#5a3a54; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#2a1a28; --bg2:#38243a; --card:#3a2639; --fg:#f6e3ea; --muted:#c7a6b7;
-  --rose:#f08aa8; --rose-soft:#6b3a52; --lilac:#c4a8e6; --line:#5a3a54; color-scheme:dark}
+  --sky1:#4b2a47; --sky2:#5c3548; --sky3:#6b4a49; color-scheme:dark}}
+:root[data-theme="dark"]{--sky1:#4b2a47; --sky2:#5c3548; --sky3:#6b4a49; color-scheme:dark}
 *{box-sizing:border-box}
-html,body{min-height:100%}
+html,body{min-height:100%; overflow-x:hidden}
 body{
-  background:linear-gradient(160deg,var(--bg) 0%,var(--bg2) 100%) fixed var(--bg);
-  color:var(--fg); font-family:var(--body); font-size:16px; line-height:1.7;
-  padding-block:40px;
+  background:linear-gradient(180deg,var(--sky1) 0%,var(--sky2) 55%,var(--sky3) 100%) fixed var(--sky2);
+  color:var(--ink); font-family:var(--body); font-size:16px; line-height:1.75;
+  padding-block:36px;
   padding-left:max(16px,env(safe-area-inset-left,0px));
   padding-right:max(16px,env(safe-area-inset-right,0px));
   display:flex; justify-content:center; align-items:flex-start;
 }
 #petals{position:fixed; inset:0; width:100%; height:100%; pointer-events:none; z-index:0}
+
 .card{
-  position:relative; z-index:1; width:100%; max-width:560px; min-width:0;
-  background:var(--card); border:1px solid var(--line); border-radius:28px;
-  padding:48px clamp(22px,6vw,48px) 40px;
-  box-shadow:0 24px 60px -28px color-mix(in srgb,var(--rose) 55%,transparent);
+  position:relative; z-index:1; width:100%; max-width:500px; min-width:0;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .35 0 0 0 0 .4 0 0 0 .06 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E"),var(--paper);
+  border-radius:4px; padding:64px clamp(34px,9vw,52px) 30px;
+  box-shadow:0 2px 4px rgba(90,40,70,.12),0 24px 50px -20px rgba(90,40,70,.4);
   text-align:center;
 }
-.eyebrow{font-size:12px; letter-spacing:.22em; text-transform:uppercase; color:var(--muted); margin:0}
-.date{
-  font-family:var(--display); font-weight:400; font-size:clamp(70px,20vw,108px);
-  line-height:1.15; margin:14px 0 6px; color:var(--rose); letter-spacing:-.02em;
-  font-variant-numeric:lining-nums;
+.card::before{content:""; position:absolute; inset:14px; border:1.5px solid var(--rose-soft); pointer-events:none}
+.card::after{content:""; position:absolute; inset:19px; border:1px solid color-mix(in srgb,var(--rose-soft) 60%,transparent); pointer-events:none}
+.corner{position:absolute; width:96px; height:96px; pointer-events:none}
+.corner.tl{top:8px; left:8px}
+.corner.tr{top:8px; right:8px; transform:scaleX(-1)}
+.corner.bl{bottom:8px; left:8px; transform:scaleY(-1)}
+.corner.br{bottom:8px; right:8px; transform:scale(-1,-1)}
+
+.stage{display:grid}
+.page{
+  grid-area:1/1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px;
+  min-width:0; opacity:0; visibility:hidden; transform:translateY(8px);
+  transition:opacity .45s ease, transform .45s ease, visibility 0s linear .45s;
 }
-.date span{color:var(--lilac)}
-h1{
-  font-family:var(--display); font-weight:400;
-  font-size:clamp(22px,5.6vw,28px); line-height:1.5; margin:0 0 28px; text-wrap:balance;
-}
-.msg{margin:0 auto 14px; max-width:44ch; text-wrap:pretty; color:var(--fg)}
-.photo{margin:26px 0 30px; padding:0}
-.photo img{display:block; width:100%; height:auto; border-radius:18px; border:6px solid var(--card); box-shadow:0 10px 30px -14px color-mix(in srgb,var(--rose) 60%,transparent)}
-.wishes{list-style:none; padding:0; margin:30px 0; display:grid; gap:12px; text-align:left}
-.wishes li{
-  display:flex; gap:14px; align-items:baseline; padding:14px 16px; min-width:0;
-  border:1px solid var(--line); border-radius:14px; background:color-mix(in srgb,var(--rose-soft) 35%,transparent);
-}
-.wishes b{font-family:var(--display); font-weight:400; color:var(--rose); white-space:nowrap}
-.wishes span{min-width:0}
-button{
-  font:inherit; font-weight:500; color:#fff; background:var(--rose); border:0; border-radius:999px;
-  padding:12px 28px; cursor:pointer; transition:transform .15s ease, filter .15s ease;
-}
-button:hover{filter:brightness(1.06); transform:translateY(-1px)}
-button:focus-visible{outline:3px solid var(--lilac); outline-offset:3px}
-@media (prefers-reduced-motion:reduce){button{transition:none}}
+.page.on{opacity:1; visibility:visible; transform:none; transition:opacity .45s ease, transform .45s ease, visibility 0s}
+h1,h2{font-family:var(--display); font-style:italic; font-weight:600; color:var(--rose); margin:0; text-wrap:balance; line-height:1.2}
+h1{font-size:clamp(28px,8vw,38px)}
+h2{font-size:clamp(30px,8.6vw,42px)}
+.hearts{color:var(--rose); font-size:10px; letter-spacing:.7em; padding-left:.7em}
+p{margin:0; text-wrap:pretty; max-width:34ch}
+p strong{font-weight:600; color:var(--rose)}
+.script{font-family:var(--display); font-style:italic; font-weight:500; color:var(--rose); font-size:clamp(22px,6vw,28px); line-height:1.35}
+.small{font-size:14px; color:var(--muted)}
+.date{font-family:var(--display); font-style:italic; font-size:24px; color:var(--rose); letter-spacing:.06em}
+.big{font-family:var(--display); font-style:italic; font-weight:600; color:var(--rose); font-size:clamp(40px,12vw,56px); line-height:1.05}
+.photo{position:relative; margin:8px 0 6px; padding:0; transform:rotate(-1.4deg); width:min(100%,300px)}
+.photo::before{content:""; position:absolute; top:-11px; left:50%; width:84px; height:22px; transform:translateX(-50%) rotate(3deg); background:color-mix(in srgb,var(--lilac) 55%,transparent); border:1px solid color-mix(in srgb,var(--lilac) 70%,transparent); z-index:1}
+.photo img{display:block; width:100%; height:auto; border:8px solid #fffdfb; border-bottom-width:18px; box-shadow:0 8px 22px -10px rgba(90,40,70,.5)}
+
+.nav{position:relative; z-index:2; display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:26px}
+.dots{display:flex; gap:9px}
+.dots button{width:9px; height:9px; padding:0; border-radius:50%; border:1.5px solid var(--rose); background:transparent}
+.dots button[aria-current="true"]{background:var(--rose)}
+button{font:inherit; cursor:pointer}
+.arrow{min-width:44px; height:38px; border-radius:999px; border:1.5px solid var(--rose-soft); background:transparent; color:var(--rose); font-size:18px; line-height:1}
+.arrow:disabled{opacity:.3; cursor:default}
+.next{min-width:44px; height:38px; padding:0 18px; border-radius:999px; border:0; background:var(--rose); color:#fff; font-size:14px; font-weight:500}
+.arrow:focus-visible,.next:focus-visible,.dots button:focus-visible{outline:3px solid var(--lilac); outline-offset:2px}
+.special{margin-top:6px; padding:10px 20px; border-radius:999px; border:1.5px solid var(--rose); background:transparent; color:var(--rose); font-size:14px; font-weight:500}
+.special:hover{background:var(--rose); color:#fff}
+.special:focus-visible{outline:3px solid var(--lilac); outline-offset:2px}
+.surprise{display:flex; flex-direction:column; align-items:center; gap:10px; margin-top:4px; animation:pop .5s ease}
+.surprise img{width:min(100%,260px); height:auto; border-radius:6px}
+@keyframes pop{from{opacity:0; transform:scale(.9)}to{opacity:1; transform:none}}
+.hint{margin-top:10px; font-size:12px; color:var(--muted); letter-spacing:.04em}
+@media (prefers-reduced-motion:reduce){.page,.page.on{transition:none}}
 </style>
 
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="corner" viewBox="0 0 100 100">
+      <g fill="none" stroke="var(--leaf)" stroke-width="1.6" stroke-linecap="round">
+        <path d="M32 30 C50 14 68 20 92 12"/><path d="M30 32 C14 50 20 68 12 92"/>
+      </g>
+      <g fill="var(--leaf)">
+        <ellipse cx="54" cy="19" rx="7" ry="3.2" transform="rotate(-20 54 19)"/>
+        <ellipse cx="76" cy="16" rx="6" ry="2.8" transform="rotate(-10 76 16)"/>
+        <ellipse cx="19" cy="54" rx="3.2" ry="7" transform="rotate(20 19 54)"/>
+        <ellipse cx="16" cy="76" rx="2.8" ry="6" transform="rotate(10 16 76)"/>
+      </g>
+      <circle cx="30" cy="30" r="16" fill="var(--rose)"/>
+      <circle cx="30" cy="30" r="11" fill="var(--rose-lt)"/>
+      <path d="M30 24 a6 6 0 1 1 -5 4 a3.5 3.5 0 1 1 4 -3" fill="none" stroke="var(--rose)" stroke-width="1.6" stroke-linecap="round"/>
+      <circle cx="52" cy="35" r="6" fill="var(--rose-lt)" stroke="var(--rose)" stroke-width="1"/>
+      <circle cx="35" cy="52" r="5" fill="var(--rose-lt)" stroke="var(--rose)" stroke-width="1"/>
+    </symbol>
+  </defs>
+</svg>
+
 <canvas id="petals" aria-hidden="true"></canvas>
-<main class="card">
-  <p class="eyebrow">Ngày Phụ nữ Việt Nam</p>
-  <div class="date">20<span>.</span>10</div>
-  <h1>Chúc chị Mai Hoa một ngày 20/10 vui vẻ!</h1>
-  <p class="msg">Chúc chị Hoa tuổi mới tươi như Hoa, ngủ sớm để không bị đau đầu, hay cười, ăn đủ bữa và đặc biệt là nhớ uống đủ nước.</p>
-  <p class="msg">Chúc "bông Hoa" luôn luôn xinh tươi!</p>
-  <figure class="photo"><img src="hoa.jpg" alt="Chị Hoa trong cánh đồng hoa hướng dương"></figure>
-  <button id="burst" type="button">Nhận thêm hoa</button>
+<main class="card" id="card">
+  <svg class="corner tl" aria-hidden="true"><use href="#corner"/></svg>
+  <svg class="corner tr" aria-hidden="true"><use href="#corner"/></svg>
+  <svg class="corner bl" aria-hidden="true"><use href="#corner"/></svg>
+  <svg class="corner br" aria-hidden="true"><use href="#corner"/></svg>
+
+  <div class="stage">
+    <section class="page on" aria-label="Trang 1">
+      <h1>Chúc chị Mai Hoa một ngày 20/10 vui vẻ!</h1>
+      <p>Chúc chị Mai Hoa tuổi mới <strong>tươi như Hoa</strong>. Sáng nào thức dậy cũng thấy khỏe khoắn, đi làm đúng giờ và không quên chấm công để không bị mất giáp, luôn vui vẻ nha!</p>
+    </section>
+
+    <section class="page" aria-label="Trang 2" aria-hidden="true">
+      <h2>Ngủ sớm</h2>
+      <p class="script">để khum bị đau đầu</p>
+      <p><strong>Ngủ đủ giấc</strong> thì mới cao lên được nhé m5.</p>
+    </section>
+
+    <section class="page" aria-label="Trang 3" aria-hidden="true">
+      <h2>Hay cười vào nhé</h2>
+      <p>Chúc chị hôm nào cũng có <strong>lí do để cười</strong>. Nếu không có lí do thì cứ tìm đến em pha trò cho cười.</p>
+    </section>
+
+    <section class="page" aria-label="Trang 4" aria-hidden="true">
+      <h2>Uống đủ nước</h2>
+      <p class="script">và ăn đủ bữa</p>
+      <p>Mau <strong>ăn chóng lớn</strong> nha chị. Không uống đủ nước là <strong>héo</strong> đấy.</p>
+    </section>
+
+    <section class="page" aria-label="Trang 5" aria-hidden="true">
+      <p class="script">Chúc "bông Hoa" luôn luôn xinh tươi!</p>
+      <figure class="photo"><img src="hoa.jpg" alt="Chị Hoa trong cánh đồng hoa hướng dương"></figure>
+      <div class="big">Happy Women's Day</div>
+      <p class="small">Chúc mừng Ngày Phụ nữ Việt Nam</p>
+      <div class="date">20 · 10</div>
+      <button class="special" id="special" type="button" aria-expanded="false" aria-controls="surprise">Bấm vào đây để có điều đặc biệt</button>
+      <div class="surprise" id="surprise" hidden>
+        <img src="dacbiet.gif" alt="Chú thỏ bắn pháo giấy chúc mừng">
+        <p class="script">Chị Hoa là bông hoa xinh nhất văn phòng!</p>
+      </div>
+    </section>
+  </div>
+
+  <div class="nav">
+    <button class="arrow" id="prev" type="button" aria-label="Trang trước">&#8592;</button>
+    <div class="dots" id="dots"></div>
+    <button class="next" id="next" type="button">Tiếp</button>
+  </div>
 </main>
 
 <script>
 (function(){
+  /* Chuyển trang */
+  var pages=[].slice.call(document.querySelectorAll('.page'));
+  var dots=document.getElementById('dots'), prev=document.getElementById('prev'), next=document.getElementById('next');
+  var cur=0, startX=null;
+  pages.forEach(function(_,i){
+    var b=document.createElement('button'); b.type='button'; b.setAttribute('aria-label','Trang '+(i+1));
+    b.addEventListener('click',function(){show(i)}); dots.appendChild(b);
+  });
+  function show(n){
+    cur=Math.max(0,Math.min(pages.length-1,n));
+    pages.forEach(function(p,i){p.classList.toggle('on',i===cur); p.setAttribute('aria-hidden',i===cur?'false':'true')});
+    [].forEach.call(dots.children,function(b,i){ if(i===cur){b.setAttribute('aria-current','true')}else{b.removeAttribute('aria-current')} });
+    prev.disabled=cur===0;
+    next.textContent=cur===pages.length-1?'↺ Xem lại từ đầu':'Tiếp';
+  }
+  prev.addEventListener('click',function(){show(cur-1)});
+  next.addEventListener('click',function(){show(cur===pages.length-1?0:cur+1)});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight')show(cur+1); else if(e.key==='ArrowLeft')show(cur-1);
+  });
+  var card=document.getElementById('card');
+  card.addEventListener('touchstart',function(e){startX=e.touches[0].clientX},{passive:true});
+  card.addEventListener('touchend',function(e){
+    if(startX===null)return; var dx=e.changedTouches[0].clientX-startX; startX=null;
+    if(Math.abs(dx)>50){show(dx<0?cur+1:cur-1)}
+  });
+  show(0);
+  var sp=document.getElementById('special'), su=document.getElementById('surprise');
+  sp.addEventListener('click',function(){
+    var open=su.hidden; su.hidden=!open; sp.setAttribute('aria-expanded',open?'true':'false');
+    sp.textContent=open?'Ẩn đi':'Bấm vào đây để có điều đặc biệt';
+    if(open&&window.__burst)window.__burst();
+  });
+
+  /* Hoa rơi */
   var c=document.getElementById('petals'), x=c.getContext('2d'), W,H,dpr=Math.min(window.devicePixelRatio||1,2);
   var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var cols=['#f4a7bd','#f9c6d4','#d9a8e6','#fbd9e2','#e58aa7'];
+  var cols=['#f4a7bd','#f9c6d4','#e58aa7','#fbd9e2','#f7c9a8'];
   var ps=[];
   function size(){W=innerWidth;H=innerHeight;c.width=W*dpr;c.height=H*dpr;x.setTransform(dpr,0,0,dpr,0,0)}
-  function mk(y){return{x:Math.random()*W,y:y!=null?y:Math.random()*H,r:6+Math.random()*9,vy:.4+Math.random()*.9,
-    vx:-.3+Math.random()*.6,a:Math.random()*6.28,va:(Math.random()-.5)*.03,sw:Math.random()*6.28,col:cols[(Math.random()*cols.length)|0],o:.55+Math.random()*.4}}
+  function mk(y){return{x:Math.random()*W,y:y!=null?y:Math.random()*H,r:5+Math.random()*8,vy:.35+Math.random()*.8,
+    vx:-.3+Math.random()*.6,a:Math.random()*6.28,va:(Math.random()-.5)*.03,sw:Math.random()*6.28,col:cols[(Math.random()*cols.length)|0],o:.5+Math.random()*.4}}
   function draw(p){
     x.save();x.translate(p.x,p.y);x.rotate(p.a);x.globalAlpha=p.o;x.fillStyle=p.col;
     x.beginPath();x.moveTo(0,-p.r);x.bezierCurveTo(p.r*.9,-p.r*.6,p.r*.7,p.r*.7,0,p.r);
@@ -103,15 +216,11 @@ button:focus-visible{outline:3px solid var(--lilac); outline-offset:3px}
       if(p.y>H+20){ps[i]=mk(-20)} draw(p);}
     requestAnimationFrame(tick);
   }
+  window.__burst=function(){if(reduce)return;for(var k=0;k<40;k++){var p=mk(-10-Math.random()*H*.4);p.vy+=.8;ps.push(p)}if(ps.length>140)ps.splice(0,ps.length-140)};
   size();addEventListener('resize',size);
-  var n=reduce?14:Math.round(Math.min(46,Math.max(22,W/28)));
+  var n=reduce?12:Math.round(Math.min(34,Math.max(16,W/36)));
   for(var i=0;i<n;i++)ps.push(mk());
   if(reduce){for(var j=0;j<ps.length;j++)draw(ps[j])}else{tick()}
-  document.getElementById('burst').addEventListener('click',function(){
-    if(reduce)return;
-    for(var k=0;k<30;k++){var p=mk(-10-Math.random()*H*.4);p.vy+=.6;ps.push(p)}
-    if(ps.length>140)ps.splice(0,ps.length-140);
-  });
 })();
 </script>
 </body>
